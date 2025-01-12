@@ -4,7 +4,7 @@
   <title>Ứng dụng Lịch sử</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
   <style>
-    #map { height: 500px; } /* Điều chỉnh kích thước bản đồ */
+    #map { height: 500px; } 
   </style>
 </head>
 <body>
@@ -13,26 +13,23 @@
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    // Khởi tạo bản đồ
-    var map = L.map('map').setView([21.0278, 105.8342], 6); // Tọa độ trung tâm: Việt Nam
-
-    // Thêm lớp bản đồ từ OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    // ... (Mã nguồn khởi tạo bản đồ) ...
 
     // Xử lý sự kiện click
     map.on('click', function(e) {
-        var lat = e.latlng.lat.toFixed(4); // Lấy vĩ độ, làm tròn đến 4 chữ số thập phân
-        var lng = e.latlng.lng.toFixed(4); // Lấy kinh độ, làm tròn đến 4 chữ số thập phân
-        alert("Tọa độ: " + lat + ", " + lng);
+        // ... (Mã nguồn hiển thị tọa độ) ...
     });
 
-    // Thêm tên quốc gia, thành phố, biên giới (sử dụng OpenStreetMap Names)
-    L.tileLayer('https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
-	    maxZoom: 18,
-	    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+    // *** Thêm marker và popup tại đây ***
+    L.marker([21.0278, 105.8342]) // Tọa độ Hà Nội
+        .addTo(map)
+        .bindPopup("<b>Hà Nội</b><br> Thủ đô của Việt Nam."); 
+
+    L.marker([10.7758, 106.6670]) // Tọa độ TP.HCM
+        .addTo(map)
+        .bindPopup("<b>Thành phố Hồ Chí Minh</b><br> Thành phố lớn nhất Việt Nam."); 
+    // *** Kết thúc phần thêm marker ***
+
   </script>
 </body>
 </html>
