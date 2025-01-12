@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ứng dụng Lịch sử</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    #map { height: 400px; }
+  </style>
+</head>
+<body>
+
+  <div id="map"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Khởi tạo bản đồ
+    var map = L.map('map').setView([0, 0], 2); // Vị trí ban đầu: [vĩ độ, kinh độ], mức zoom
+
+    // Thêm lớp bản đồ từ OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Xử lý sự kiện click
+    map.on('click', function(e) {
+        alert("Bạn đã click vào tọa độ: " + e.latlng);
+    });
+  </script>
+
+</body>
+</html>
